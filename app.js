@@ -1,10 +1,9 @@
 // Car class: Represents a Carlist
 class Car {
-  constructor(custname, custmobile, vehiclenum, vehiclemodel) {
+  constructor(custname, custmobile, vehiclenum) {
     this.custname = custname;
     this.custmobile = custmobile;
     this.vehiclenum = vehiclenum;
-    this.vehiclemodel = vehiclemodel;
   }
 }
 // UI class: handle UI tasks
@@ -23,7 +22,6 @@ class UI {
     <td>${car.custname}</td>
     <td>${car.custmobile}</td>
     <td>${car.vehiclenum}</td>
-    <td>${car.vehiclemodel}</td>
 
     <td><a href="#" class="btn btn-danger btn-sm delete">Delete</a></td>
     `;
@@ -51,7 +49,6 @@ class UI {
     document.querySelector("#custname").value = "";
     document.querySelector("#custmobile").value = "";
     document.querySelector("#vehiclenum").value = "";
-    document.querySelector("#vehiclemodel").value = "";
   }
 }
 
@@ -96,19 +93,17 @@ document.querySelector("#car-form").addEventListener("submit", (e) => {
   const custname = document.querySelector("#custname").value;
   const custmobile = document.querySelector("#custmobile").value;
   const vehiclenum = document.querySelector("#vehiclenum").value;
-  const vehiclemodel = document.querySelector("#vehiclemodel").value;
 
   // Validation
   if (
     custname === "" ||
     custmobile === "" ||
-    vehiclenum === "" ||
-    vehiclemodel === ""
-  ) {
+    vehiclenum === ""
+      ) {
     UI.showAlert("Please fill the details", "danger");
   } else {
     // Instatiate car
-    const car = new Car(custname, custmobile, vehiclenum, vehiclemodel);
+    const car = new Car(custname, custmobile, vehiclenum);
     //console.log(car);
 
     // Add Car to UI
@@ -135,3 +130,5 @@ document.querySelector("#car-list").addEventListener("click", (e) => {
   //show success message
   UI.showAlert("Book Removed", "success");
 });
+
+
